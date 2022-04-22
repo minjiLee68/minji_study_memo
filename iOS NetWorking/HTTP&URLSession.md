@@ -235,7 +235,7 @@ weatherInformation 객체를 json 형태로 만들 수 있고, json형태를 wea
 
 
 ## Code
-<img src="https://user-images.githubusercontent.com/88191880/164479340-db07b595-b16b-40a4-80ca-73b11b121225.png" width="220" height="300"/>
+<img src="https://user-images.githubusercontent.com/88191880/164479340-db07b595-b16b-40a4-80ca-73b11b121225.png" width="280" height="300"/>
 
 json 형태의 데이터로 변환하고자 한다면 기본적으로 json 형태의 키와 사용자가 정의한 프로퍼티의 이름과 타입이 일치해야 한다.
 
