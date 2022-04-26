@@ -317,3 +317,27 @@ alamofire는 요청을 생성할 때, method 파라미터의 url과 파라미터
 ## Code
 <img src="https://user-images.githubusercontent.com/88191880/165241679-688a0b60-d170-4b16-b526-f71f95d2d1cd.png" width="300" height="380"/>
 
+
+    이제 alamofire을 이용해서 시도별 코로나 현황 api를 호출해준다.
+    fetchCovidOverView라는 메서드를 만들어주고 메서드 파라미터에는 completionHandle를 전달받게 정의를 해준다.
+    api를 요청하고 서버에서 json데이터를 응답 받거나 요청에 실패했을 떄
+    completionHanler Closure를 호출해 해당 closure를 정의하는 곳에 응답받은 데이터를 전달한다.
+    그리고 closure를 @escaping closure로 선언을 해준다. escaping closure는
+    closure가 함수로 (escape) 탈출한다는 의미이다. 함수의 인자로 closure가 전달되지만,
+    함수가 반환되는 후에도 실행되는 것을 의미한다. 함수의 인자가 함수의 영역을 탈출하여 함수 밖애서도 사용할 수 있는 개념
+    @escaping closure를 사용하는 대표적인 예시로는,
+    비동기 작업을 하는 경우이다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165245293-74072b11-895c-4727-a22b-d5894afc86f6.png" width="500" height="360"/>
+
+-------------
+
+    viewDidLoad에서 self.fetchCovidOverView 메서드를 호출해서 앱이 실행되고,
+    viewController가 표시될 때, 시도별 코로나 현황 api를 호출하게 만들어준다.
+    순환 참조를 방지하기 위해서 closure 헤드에 [weak self] 캡쳐 리스트를 표시해준다.
+    guard let self = self else { return }구문을 작성해서 일시적으로 self가
+    strong reference가 되게 만들어준다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165247783-615a3186-e525-41f4-b3f5-6513be3bc89d.png" width="500" height="360"/>
