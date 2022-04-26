@@ -213,13 +213,7 @@ URLSession Task
 # 🌤 오늘의 날씨
 날씨 오픈api를 사용하여 도시를 입력하면 도시별 현재 날씨에 대해서 보여주는 작은어플(어플이라기도 뭐한..)을 만들어보자
 
-    최종 어플 디자인
-    * 도시 입력 전
-<img src="https://user-images.githubusercontent.com/88191880/164455592-368b6552-17f4-4ad1-9315-6939b9953766.png" width="160" height="320"/>
-
-    * 도시 입력 후
-<img src="https://user-images.githubusercontent.com/88191880/164455961-e620d0a7-1b53-4308-8a16-4be70e97a548.png" width="160" height="320"/>
-
+----------
 먼저 WeatherInformation이라는 구조체를 생성해준다. 그 다음 Codable프로토콜을 채택해준다.
 
 Codable을 채택했다는 것을 한 마디로,
@@ -264,4 +258,62 @@ weather 배열의 첫번쨰 요소가 상수에 대입되게 하고, 현재 날�
 
 ## Code
 <img src="https://user-images.githubusercontent.com/88191880/164484071-4c77e740-ecf9-42f4-94e0-bf06c0e23c9c.png" width="500" height="260"/>
+
+
+    최종 어플
+    * 도시 입력 전          * 도시 입력 후
+<img src="https://user-images.githubusercontent.com/88191880/164455592-368b6552-17f4-4ad1-9315-6939b9953766.png" width="160" height="320"/> <img src="https://user-images.githubusercontent.com/88191880/164455961-e620d0a7-1b53-4308-8a16-4be70e97a548.png" width="160" height="320"/> 
+
+------------------
+
+# 코로나 현황판 🦠
+시도별 코로나 현황을 호출해주는 굿바이 코로나 api를 호출하여서 서버에서 응답받은 데이터를 가지고 차트를 보여주는 화면 구현 후 시도를 클릭하면 더 자세한 내용을 보여주는 화면까지 구현해준다.
+
+    기능 상세
+    - 시도별 신규 확진자 수가 파이 차트로 표시 되어야 한다.
+    - 도시 항목을 선택하면 상세화면을 볼 수 있는 화면으로 이동되어야 한다.
+
+    활용 기술
+    - 굿바이 코로나 api 
+    - Alamofire
+    - Cocoapods
+
+## Alamofire
+Alamofire는 Swift 기반의 HTTP 네트워킹 라이브러리이다.
+URL Session을 기반으로한 라이브러리로, 네트워킹을 단순화하고 네트워킹을 위한 다양한 메서드와 JSON 파싱등을 제공한다.
+
+    - Alamofire 기능
+    - 연결가능한(Chainable) Request/Response 메서드
+    - URL / JSON / plist 파라미터 인코딩
+    - 파일 / 데이타 / 스트림 / 멀티파트 폼 데이타 업로드
+    - Request 또는 Resume 데이터를 활용한 다운로드
+    - NSURLCredential을 통한 인증(Authentication)
+    - HTTP 리스폰스 검증(Validation)
+    - TLS 인증서와 공개 키 Pinning
+    - 진행 상태 클로저와 NSProgress
+    - CURL 디버깅 출력
+    - 광범위한 단위 테스트 보장
+    - 완벽한 문서화
+
+## URL Session대신 Alamofire을 쓰는 이유?
+- 코드의 간소화, 가독성 측면에서 도움을 주고 여러 기능을 직접 구축하지 않아도 쉽게 사용 가능
+
+예를 들어 어떤 api를 get방식 호출하는 코드를 작성한다 했을 때
+url session을 이용하여 코드를 작성하면, url 생성과 statusCode 검증 에러처리 등 많은 코드를 작성해야 하지만, alamofire을 사용하면 URL Session보다 적은 코드로 똑같은 기능구현이 가능하다.
+
+url session은 호출할 api의 url의 api를 호출하고, query 파라미터가 있다면 url에 맵핑 시켜주는 코드를 작성해줘야 하지만,
+
+alamofire는 요청을 생성할 때, method 파라미터의 url과 파라미터를 넘겨주면, 내부에서 자동으로 url 파라미터를 맵핑시켜준다.
+
+유효성 검사같은 경우에도 url session은 reponse 객체를 HTTP Response 로 다운 캐스팅하여 statusCode 프로퍼티에 접근해 200번대인지 확인하는 코드를 직접 작성해주었지만, alamofire는 delegate 메서드만 호출을 하면 정상 statusCode 200번대만 허용하게 만들어준다.
+
+------------
+
+    먼저 응답받은 json data를 맵핑할 수 있는 구조체를 만들어준다.
+    하나의 객체 안에 시도명 키를 가지고 있는 객체를 구조체로 정의해준다.(CovidOverView)
+    그리고 시도명 키를 가지고 있는 객체를 맵핑하는 구조체를 정의해준다. (CityCovidOverView)
+    CityCovidOverView 구조체 안에서는 시도명 객체를 맵핑하기 위해 프로퍼티를 선언해준다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165241679-688a0b60-d170-4b16-b526-f71f95d2d1cd.png" width="300" height="380"/>
 
