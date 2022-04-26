@@ -129,3 +129,26 @@ alamofire는 요청을 생성할 때, method 파라미터의 url과 파라미터
 
 ## Code
 <img src="https://user-images.githubusercontent.com/88191880/165247783-615a3186-e525-41f4-b3f5-6513be3bc89d.png" width="500" height="360"/>
+
+----------------
+
+    서버에서 응답받은 데이터를 파이차트에서 나타내도록 구현한다.
+    먼저 메인 화면에서 보여주는 국내확진자 수와 국내 신규 확진자 수를 나타내도록 구현해준다. 그리고 정의한 메소드를 completion closure에서 sussess case문 에서 호출시켜준다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165327320-dfd129a7-e466-40df-81f3-3081687ad437.png" width="480" height="90"/>
+<img src="https://user-images.githubusercontent.com/88191880/165328847-81a2db60-90a6-412c-ab87-af3d94ee595a.png" width="500" height="320"/>
+
+
+    파이차트를 구성해주는 메서드를 만든다.
+    covidOverViewList.compactMap으로 covidOverViewList 객체를 pieChartDataEntry 객체로 맵핑 시켜준다.
+    그리고 pieChartDataEntry 객체로 맵핑 하기 위해서
+    return pitChartDataEntry 인스턴스를 생성하고 value 파라미터에는 차트 항목에 들어가는 값을 넣어준다.
+    그런데 시도별 신규 확진자 수가 차트의 값이 되게 만들어주어야 하는데,
+    value 파라미터 타입이 double타입 이여서 string을 double 타입으로 바꿔주는 메서드를 만들어준다. 
+    pieChart에 표시할 데이터 항목을 만들었으면, dataSet으로 항목을 묶어준다. (pieChartDataSet)
+    이 메서드 또한 completion sussess안에 정의해준다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165329830-7c8bd4cf-9ebd-4b4a-af79-f43553362e48.png" width="500" height="400"/>
+<img src="https://user-images.githubusercontent.com/88191880/165332268-57434e64-4f07-4625-bf08-62c1e9d103d8.png" width="500" height="90"/>
