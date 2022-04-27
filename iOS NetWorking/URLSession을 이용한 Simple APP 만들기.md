@@ -152,3 +152,20 @@ alamofire는 요청을 생성할 때, method 파라미터의 url과 파라미터
 ## Code
 <img src="https://user-images.githubusercontent.com/88191880/165329830-7c8bd4cf-9ebd-4b4a-af79-f43553362e48.png" width="500" height="400"/>
 <img src="https://user-images.githubusercontent.com/88191880/165332268-57434e64-4f07-4625-bf08-62c1e9d103d8.png" width="500" height="90"/>
+
+-------------
+
+    해당 시도를 눌렀을 때 상세화면을 보여주는 화면 만들기
+    covidOverView프로퍼티 생성 후 cell.label에 해당 데이터 대입해주기
+    viewController에서 ChartViewDelegate를 채택하고 
+    차트에서 항목을 선택하였을 때 호출이 되는 메서드인 chartValueSelected 메서드를 구현해주고 entry 메서드 파라미터에 의해 선택된 항목에 저장된 데이터를 가져와서 covidDetailViewController가 push되게 구현해준다.
+
+## Code
+<img src="https://user-images.githubusercontent.com/88191880/165447888-dbe2e062-8557-4f8d-addf-cce25dd57431.png" width="500" height="320"/>
+<img src="https://user-images.githubusercontent.com/88191880/165448091-aa32ad93-9696-4c53-b4fc-d73d51fddeba.png" width="500" height="120"/>
+
+----------------
+
+    *최종 화면
+
+<img src="https://user-images.githubusercontent.com/88191880/165448732-1247fb51-ffe5-4f1c-a3d1-132b40511df2.png" width="180" height="400"/> <img src="https://user-images.githubusercontent.com/88191880/165448837-fe785744-5bf6-4500-8671-693e7d5a5a4b.png" width="180" height="400"/>
