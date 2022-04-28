@@ -1,4 +1,4 @@
-#Hashable이 무엇이고, Equatable을 왜 상속해야 할까?
+# Hashable이 무엇이고, Equatable을 왜 상속해야 할까?
 
 ## Hashable
 ### 정의
