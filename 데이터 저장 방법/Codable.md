@@ -72,7 +72,7 @@ view에서 정보들을 관리하는 viewmodel이 자기가 모르는 정보들�
     5. "diary.json"파일에 있는 내용들을 다 읽어와서 Diary객체로 전환 시켜주는 메서드를 만든다.
 
 # Code
-<img src="https://user-images.githubusercontent.com/88191880/166460241-1b2c4d93-2fd0-46da-9a17-5d6648ed644b.png" width="500" height="200"/> 
+<img src="https://user-images.githubusercontent.com/88191880/166460241-1b2c4d93-2fd0-46da-9a17-5d6648ed644b.png" width="500" height="300"/> 
 
 ---------
 ## DiaryViewModel
@@ -83,7 +83,7 @@ view들을 구성하기 위해 필요한 정보들을 갖고 있는 viewmodel을
     3. add,update,delete,loadTask 메서드는 manager에서 정보를 가져와서 구현해준다.
 
 # Code
-<img src="https://user-images.githubusercontent.com/88191880/166469164-eb7e5027-d68e-4441-966a-29afb0065e3c.png" width="500" height="200"/>
+<img src="https://user-images.githubusercontent.com/88191880/166469164-eb7e5027-d68e-4441-966a-29afb0065e3c.png" width="500" height="300"/>
 
 --------
 
