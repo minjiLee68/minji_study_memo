@@ -88,3 +88,23 @@ view들을 구성하기 위해 필요한 정보들을 갖고 있는 viewmodel을
 --------
 
 ## Struct -> json으로 인코딩해서 disk에 저장하기
+
+Diary struct 데이터들을 바로 json으로 쓴다.
+(json은 Dictionary형태로 표현된다.)
+
+json타입이 서버에서 내려오면 하나의 파일이 되기 떄문에, 데이터 형태로 만들 수 있다. (데이터를 swift가 알아먹을 수 있는 형태의 오브젝트로 만들어서 앱 내에서 사용하게 하는) 파싱을 해야 하는데, 그 과정이 손이 많이 가고, 시간이 많이 걸림 
+
+But! Codable이 나오면서부터 파싱이라는 긴 과정을 할 필요가 없게된다. Codable은 json형태의 파일이 바로 Swift가 알아먹을 수 있는 struct형태로 바꿔준다.(오예)
+
+이제 json 형태의 데이터들을 disk에 쓰고 읽을 수 있게 만들어준다.
+
+    1.Diary 객체를 받아서 JSONEndocer를 통해 struct를 json타입으로 인코딩 시켜준다.
+    2. 인코딩된 데이터를 가지고 FileManager형을 통해서 json데이터 타입을 실제 파일로 만들어줌
+    2-1. FileManager.default.fileExists(at: ) -> 똑같은 이름이 있는지 확인
+    2-2. FileManager.default.createFile -> json 데이터를 원하는 파일이름으로 써줌
+    3. 파일이름을 통해 읽어와서 데이터 형태로 만들어주고 데이터형태를 JSONDecoder로 struct로 만들어준다.
+
+
+
+# Code
+<img src="https://user-images.githubusercontent.com/88191880/166490536-fea5cee1-2d94-44ca-8de5-47cd2001ff48.png" width="500" height="300"/>
