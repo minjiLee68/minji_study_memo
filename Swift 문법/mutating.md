@@ -44,6 +44,6 @@ Cannot assign property라는 에러가 떴다. 이것이 바로 값 타입인 �
         }
 
         mutating func changeAge() {
-            age = 10 //에러!!
+            age = 10
         }
     }
