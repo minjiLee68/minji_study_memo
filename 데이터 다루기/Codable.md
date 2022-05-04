@@ -72,7 +72,7 @@ view에서 정보들을 관리하는 viewmodel이 자기가 모르는 정보들�
     5. "diary.json"파일에 있는 내용들을 다 읽어와서 Diary객체로 전환 시켜주는 메서드를 만든다.
 
 # Code
-<img src="https://user-images.githubusercontent.com/88191880/166722808-7bfa03ce-be72-4ce0-857f-9e6d39bec3b8.png" width="500" height="240"/> 
+<img src="https://user-images.githubusercontent.com/88191880/166722808-7bfa03ce-be72-4ce0-857f-9e6d39bec3b8.png" width="500" height="300"/> 
 
 ---------
 ## DiaryViewModel
