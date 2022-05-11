@@ -338,3 +338,67 @@ class로 새로운 동물을 정의 하고 Zoo에 또 기존의 코드를 만져
     }      
 
 기존에 필요없는 기능들을 구현하고 있던 인터페이스들을 더욱 세분화하여 나누어 주었다.
+
+------
+
+## DIP(Dependency Inversion Principle) - 의존관계 역전 원칙
+
+상위 모듈이 하위 모듈에 의존하면 안되고 두 모듈 모두 추상화에 의존하게 만들어야 한다는 원칙이다.
+
+어떤 상위의 모듈에서 하위 모듈을 가지고 있을 때, 사위 모듈의 기능이 하위 모듈에 의존해서 기능을 수행하면 안된다는 뜻이다. 
+
+즉, 추상화를 진행하여 각각의 모듈에 더 추상화된 것에 의존하게 만들어야 한다는 뜻이다. 이렇게 코드를 설계해야 재사용에도 유용하고 하나를 수정했을 때 더욱 수정사항이 많이 없는 훌륭한 프로그램을 설계할 수 있게 된다.
+
+### 안좋은 예
+
+    class APIHandler {
+        func request() -> Data {
+            return Data(base64Encoded: "This Data")!
+        }
+    }
+
+    class LoginService {
+        let apiHandler: APIHandler = APIHandler()
+
+        func login() {
+            let loginData = apiHandler.request()
+            print(loginData)
+        }
+    }
+
+현재 상위 모듈인 loginservice가 하위 모듈인 apihandler에 의존하고 있는 관계로 만약 apihandler의 구현 방법이 변화하게 되면 프로그램에 영향을 미치게 되고 새롭게 loginservice라는 상위모듈을 수정해야하는 상황이 일어날 수 있다. 
+
+이러한 상황이 DIP의 원칙을 어긴 프로그램의 설계라고 할 수 있다.
+
+### 좋은 예
+
+    protocol APIHandlerProtocol {
+        func requestAPI() -> Data
+    }
+
+    class LoginService {
+        let apiHandler: APIHandlerProtocol
+
+        init(apiHandler: APIHandlerProtocol) {
+            self.apiHandler = apiHandler
+        }
+
+        func login() {
+            let loginData = apiHandler.requestAPI()
+            print(loginData)
+        }
+    }
+
+    class LoginAPI: APIHandlerProtocol {
+        func requestAPI() -> Data {
+            return Data(base64Encoded: "User")!
+        }
+    }
+
+    let loginAPI = LoginAPI()
+    let loginService = LoginService(apiHandler: loginAPI)
+    loginService.login()
+
+이렇게 작성하게 되면 loginservice는 기존에 apihandler에 의존하지 않고 추상화 시킨 객체인 apihandlerprotocol에 의존하게 된다. 
+
+그렇게 때문에 apihandlerprotocol의 구현부는 외부에서 변화에 따라 지정해서 지정해주면 되기 때문에 loginService는 구현부에 상관없이 좀 더 변화에 민감하지 않은 DIP의 원칙을 지킨 프로그램을 설계할 수 있다.
